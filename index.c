@@ -74,6 +74,25 @@ do{
     Taille++;   
     printf("Ajout de taches est reussi");
 }
+
+void afficher()
+{
+    if(Taille==0){
+        printf("aucun taches disponibles!!");
+        return;
+    }
+    int i;
+    for(i=0;i<Taille;i++){
+    printf("le titre est :%s\n",ts[i].titre);
+    printf("la description est :%s\n",ts[i].description);
+    printf("la priorite est :%s\n",ts[i].priorite);
+    printf("le jour est :%d\n",ts[i].date.jour);
+    printf("le mois est :%d\n",ts[i].date.mois);  
+    printf("l'annee est :%d\n",ts[i].date.annee);
+    }
+}
+
+
 void menu(){
     printf("\n Menu\n");
     printf("1.ajouter\n");
@@ -83,6 +102,7 @@ void menu(){
     printf("5.filtre \n");
     printf("6.quitter\n");
 }
+
 int main()
 {
     int p;
@@ -95,7 +115,9 @@ int main()
         case 1:
         ajouter();
         break;
-        
+        case 2: 
+        afficher();
+        break;
         default:
         printf("option invalide\n"); 
         }
