@@ -133,6 +133,24 @@ void modifier()
     printf("Entre le nouveau annee est :");
     scanf("%d",&ts[indice].date.annee);
 }
+void supprimer()
+{
+    if(Taille==0){
+        printf("aucun taches disponibles!!");
+    }
+    int indice,i;
+    printf("Entre l'indice qui veux supprimer:");
+    scanf("%d",&indice);
+        if(indice<0 || indice> Taille){
+            printf("invalide !");
+        }
+        else{
+            for(i=indice;i<Taille;i++){
+            ts[i]=ts[i+1];
+            }
+         }
+Taille--;
+}
 void menu(){
     printf("\n Menu\n");
     printf("1.ajouter\n");
@@ -161,11 +179,14 @@ int main()
         case 3:
         modifier();
         break;
+        case 4:
+        supprimer();
+        break;
         default:
         printf("option invalide\n"); 
         }
  
-   } while(p != 4);
+   } while(p != 5);
     return 0;
 }
 
