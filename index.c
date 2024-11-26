@@ -92,7 +92,47 @@ void afficher()
     }
 }
 
-
+void modifier()
+{
+    if(Taille==0){
+        printf("aucun taches disponibles!!");
+    }
+    int indice;
+    printf("Entre l'indice de la tache qui veux modifier (0 a %d): ", Taille - 1);
+    scanf("%d", &indice);
+    if (indice < 0 || indice >= Taille)
+    {
+        printf("invalide!\n");
+    }
+    else {
+    printf("Entre le nouveau titre est :");
+    scanf("%s",ts[indice].titre);
+    printf("Entre le nouveau description est :");
+    scanf("%s",ts[indice].description);
+    }
+    int choix;
+    do
+    {
+        printf("entre la priorite(1-high 2-low):");
+        scanf("%d",&choix);
+        switch (choix)
+        {
+            case 1:
+            strcpy(ts[indice].priorite,"high");
+            break;
+            case 2:
+            strcpy(ts[indice].priorite,"low");
+            break;
+           default:printf("choix invalide");
+        }
+    }while(choix!=1 && choix!=2);
+    printf("Entre le nouveau jour est :");
+    scanf("%d",&ts[indice].date.jour);
+    printf("Entre le nouveau mois est :");
+    scanf("%d",&ts[indice].date.mois);
+    printf("Entre le nouveau annee est :");
+    scanf("%d",&ts[indice].date.annee);
+}
 void menu(){
     printf("\n Menu\n");
     printf("1.ajouter\n");
@@ -118,11 +158,14 @@ int main()
         case 2: 
         afficher();
         break;
+        case 3:
+        modifier();
+        break;
         default:
         printf("option invalide\n"); 
         }
  
-   } while(p != 5);
+   } while(p != 4);
     return 0;
 }
 
