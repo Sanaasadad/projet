@@ -133,6 +133,7 @@ void modifier()
     printf("Entre le nouveau annee est :");
     scanf("%d",&ts[indice].date.annee);
 }
+
 void supprimer()
 {
     if(Taille==0){
@@ -151,6 +152,35 @@ void supprimer()
          }
 Taille--;
 }
+
+void filtre()
+{
+    int taille;
+    if (taille == 0){
+        printf("Aucune tache disponible.\n");
+        return;
+    }
+    char filtre[20];
+    printf("Entrez la priorité pour filtrer (high/low) : ");
+    scanf("%s", filtre);
+    int T= 0;
+    int i; 
+    printf("\nTaches avec la priorite '%s' :\n", filtre);
+    for (i = 0; i < taille; i++) {
+        if (strcmp(ts[i].priorite, filtre) == 0) {
+            printf("Tache %d :\n", i + 1);
+            printf("  Titre       : %s\n", ts[i].titre);
+            printf("  Description : %s\n", ts[i].description);
+            printf("  Date        : %02d/%02d/%04d\n", ts[i].date.jour, ts[i].date.mois, ts[i].date.annee);
+            printf("  priorite    : %s\n", ts[i].priorite);
+            T = 1;
+        }
+    }
+    if (!T) {
+        printf("Aucune tâche trouvée avec la priorité '%s'.\n", filtre);
+    }
+}
+
 void menu(){
     printf("\n Menu\n");
     printf("1.ajouter\n");
@@ -181,6 +211,9 @@ int main()
         break;
         case 4:
         supprimer();
+        break;
+        case 5:
+        filtre();
         break;
         default:
         printf("option invalide\n"); 
