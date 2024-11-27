@@ -155,18 +155,17 @@ Taille--;
 
 void filtre()
 {
-    int taille;
-    if (taille == 0){
+    if (Taille == 0){
         printf("Aucune tache disponible.\n");
         return;
     }
     char filtre[20];
-    printf("Entrez la priorité pour filtrer (high/low) : ");
+    printf("Entrez la priorite pour filtrer (high/low) : ");
     scanf("%s", filtre);
     int T= 0;
     int i; 
     printf("\nTaches avec la priorite '%s' :\n", filtre);
-    for (i = 0; i < taille; i++) {
+    for (i = 0; i < Taille; i++) {
         if (strcmp(ts[i].priorite, filtre) == 0) {
             printf("Tache %d :\n", i + 1);
             printf("  Titre       : %s\n", ts[i].titre);
@@ -177,7 +176,7 @@ void filtre()
         }
     }
     if (!T) {
-        printf("Aucune tâche trouvée avec la priorité '%s'.\n", filtre);
+        printf("Aucune tache trouvee avec la priorite '%s'.\n", filtre);
     }
 }
 
